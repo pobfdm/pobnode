@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Pobquery test</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	
+	<script src="jquery-2.2.3.min.js"></script>
+	<script src="../pobNode.js"></script>
+	
+	
+	<script>
+		
+		$(document).ready(function () {
+			
+			var myFormDiv= new pobNode('div');
+			myFormDiv.style='width: 550px';
+			myFormDiv.attach('body');
+			
+			var myForm= new pobNode('form');
+			myForm.attach(myFormDiv.jq);
+			
+			var nome=new pobNode('input');
+			nome.addAttr('name','nome');
+			nome.addAttr('placeholder','Nome...');
+			nome.before='<span>Nome: </span>';
+			nome.addAttr('title','Nome...');
+			nome.attach(myForm.jq);
+			
+			
+			var cognome=new pobNode('input');
+			cognome.before='<span style="margin-left:10px;">Cognome:</span>';
+			cognome.addAttr('name','cognome');
+			cognome.addAttr('placeholder','Cognome...');
+			cognome.addAttr('title','Cognome...');
+			cognome.attach(myForm.jq);
+			
+			var tel=new pobNode('input');
+			tel.addAttr('name','tel');
+			tel.addAttr('placeholder','telefono...');
+			tel.addAttr('title','telefono...');
+			tel.attach(myForm.jq);
+			
+			var myButton= new pobNode('button');
+			myButton.style='display:block;clear: both;';
+			myButton.addAttr('type', 'submit');
+			myButton.setHtml('Invia dati');
+			myButton.addAttr('name','myButton');
+			myButton.attach(myForm.jq);
+			myButton.jq.bind('click',function(){
+				var myAjax= new pobAjax('POST', 'save.php', myOutput.jq);
+				myAjax.beforeSend(function(){
+						if (nome.jq.val()!='Fabio')
+						{
+							myOutput.jq.html('<p style="background-color: red">Errore, nome deve essere "Fabio"</p>');
+							return false;
+						}
+					});
+				myAjax.complete($('body').append('<p>Richiesta completata</p>'));
+				myAjax.sendForm(myForm.jq);
+			});
+			
+			var myOutput = new pobNode('div');
+			myOutput.style='margin-top:10px;border: 5px dashed #008000; width: 400px';
+			myOutput.attach('body');
+			
+		});
+		</script>
+	
+</head>
+
+<body>
+	<h3>Prova form</h3>
+</body>
+
+</html>
+

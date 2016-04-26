@@ -4,5 +4,6 @@ with jQuery.
 
 
 You can see  some examples :
-[Hello world](/examples/index.html)
-[Forms](/examples/form.html)
+* [Hello world](/examples/index.html) 
+* [Forms](/examples/form.html)
+

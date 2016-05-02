@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>PobLayout test</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	
+	<script src="jquery-2.2.3.min.js"></script>
+	<script src="../pobLayout.js"></script>
+	<style>
+		.headerClass{
+				background-color:  #023276;
+				background: linear-gradient(#023276, #2258DA);
+			}
+			
+			.leftSideClass{
+				background-color:  #BFBFBF;
+			}
+	</style>
+	
+	<script>
+		
+		$(document).ready(function () {
+			
+			myLayout=new pobLayout();
+			myLayout.headerClass='headerClass';
+			myLayout.leftSidebarClass='leftSideClass';
+			myLayout.leftSideWidth=200;
+			myLayout.border='2px Solid #023276';
+			myLayout.label='<span style="font-size: 14px;padding-left:3px; color: #FFFFFF">My app</span>';
+			myLayout.append('<h2>Test pobLayout</h2><p>Here you can add all the html you want.</p>');
+			myLayout.appendLeftSidebar('<p><a href="#">One</a></p>');
+			myLayout.appendLeftSidebar('<p><a href="#">Two</a></p>');
+			myLayout.appendLeftSidebar('<p><a href="#">Three</a></p>');
+			myLayout.attach('body');
+			myLayout.jqBody.load('layoutManual.html');
+			
+			/*
+				If you can interact with the various elements of the layout you can use:
+				
+				"myLayout.jq" jquery to access the methods of the parent container.
+				"myLayout.jqHeader" jquery to access the methods of the header.
+				"myLayout.jqBody" jquery to access the methods of the body.
+				"myLayout.jqLeftSidebar" jquery to access the methods of the left sidebar.
+				
+				Examples:  
+					myLayout.jqBody.append('Hello world');
+					myLayout.jqBody.load('index.html');
+			*/
+		});
+		
+		</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

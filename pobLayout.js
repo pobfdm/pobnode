@@ -111,7 +111,6 @@ function pobLayout () {
 		this.idHeader=this.id+'Header';
 		this.idBody=this.id+'Body';
 		
-		//var el=this.before+'<'+this.type+ ' style="'+this.style+'"id="'+this.id+'"  class="'+this.class+'" '+this.attrs+'>'+this.html+'</'+this.type+'>'+this.after;
 		var el=this.before+'<div id="'+this.id+'" class="'+this.containerClass+'" style="width: 100%; border: '+this.border+'" '+this.attrs+'>\
 			<div id="'+this.idHeader+'" class="'+this.headerClass+'" style="width: 100%;border-bottom:'+this.border+'">'+this.label+'</div> \
 			<div id="'+this.idLeftSidebar+'" class="'+this.leftSidebarClass+'" style="width:'+this.leftSideWidth+'px;position: relative; float:left">'+this.htmlLeftSidebar+'</div> \

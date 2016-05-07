@@ -115,6 +115,32 @@ function pobTable () {
 		return r;
 	}
 	
+	this.load = function(url){
+		var response;
+		$.ajax({ type: "GET",   
+			 url: url,   
+			 async: false,
+			 success : function(text) { response= text;	 }
+		});
+		this.jqBody.html(response);
+		this.resize();
+		delete response;
+		
+	}
+	
+	this.resize= function(){
+		this.jqScrolling.css('height',this.height+'px');
+		this.jqScrolling.css('overflow','auto');
+		$('#'+this.idBody+' tr:nth-child(even)').css("background", this.evenRowsColor);
+		$('#'+this.idBody+' tr:nth-child(odd)').css("background", this.oddRowsColor);
+		
+		var j=1;
+		for (i = 0; i <this.cols.length; i++) 
+		{
+			$('#'+this.idBody+' tr td:nth-child('+j+')').css("width", this.wcols[i]+"px");
+			j++;
+		}
+	}
 	
 	
 	this.attach = function(container) {
@@ -147,21 +173,7 @@ function pobTable () {
 		this.jqBody=$('#'+this.idBody);
 		this.jqScrolling=$('#'+this.idScrolling);
 		
-		//Css styling
-		this.jqScrolling.css('height',this.height+'px');
-		this.jqScrolling.css('overflow','auto');
-		$('#'+this.idBody+' tr:nth-child(even)').css("background", this.evenRowsColor);
-		$('#'+this.idBody+' tr:nth-child(odd)').css("background", this.oddRowsColor);
-		
-		var j=1;
-		for (i = 0; i <this.cols.length; i++) 
-		{
-			$('#'+this.idBody+' tr td:nth-child('+j+')').css("width", this.wcols[i]+"px");
-			j++;
-		}
-		
-		//alert(this.cells); 
-		
+		this.resize();
 	}
     
 }

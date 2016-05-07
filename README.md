@@ -8,4 +8,5 @@ You can see  some examples :
 * [Forms](/examples/form.html)
 * [Layouts](/examples/layout.html)
 * [Tables](/examples/table.html)
+* [Tables width ajax](/examples/tableAjax.html)
 

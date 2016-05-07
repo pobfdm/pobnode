@@ -10,37 +10,73 @@
 	<script src="jquery-2.2.3.min.js"></script>
 	<script src="../pobTable.js"></script>
 	<style>
-		.tableHeader{
+		.tableContainer{
 				border: 1px Solid #4D4D4D;
 				width: 935px;
 				background-color: #BFBFBF ; /* Colore di sfondo griglia*/
 			}
+		.tableHeader tr td{	font-weight: bold;	}
+		.tableBody{ font-size: 12px}		
+			
 		</style>
 	
 	<script>
 		
 		$(document).ready(function () {
 			myTable = new pobTable();
-			myTable.cssClassContainer='tableHeader';
-			
-			myTable.rowStart('alert("Ciao")','');
+			myTable.cssClassContainer='tableContainer';
+			myTable.cssClassHeader='tableHeader';
+			myTable.cssClassBody='tableBody';
+			myTable.height= 100;	
+				
+			//Make columns
 			myTable.addCol('Name', 300, 'colName');
 			myTable.addCol('Last Name', 400, 'colLastName');
 			myTable.addCol('Telephone', 200, 'colTel');
-			myTable.rowEnd();
 			
-			myTable.rowStart('alert("Ciao")','');
+			//Insert some rows
 			myTable.addCell('Fabio', '');
 			myTable.addCell('Di Matteo', '');
 			myTable.addCell('0648357', '');   
-			myTable.rowEnd();
 			
-			myTable.rowStart('alert("Ciao")','');
+			myTable.onClickRow='alert(\'Chester\')';
+			myTable.rowStyle='cursor:pointer;';
+			myTable.addCell('Chester', '');
+			myTable.cellStyle='background-color:red;';
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0873245', '');  
+			
+			myTable.addCell('Primo', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0873245', '');  
+			
+			myTable.addCell('Fabio', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0648357', '');   
+			
+			myTable.onClickRow='alert(\'Chester\')';
 			myTable.addCell('Chester', '');
 			myTable.addCell('Di Matteo', '');
 			myTable.addCell('0873245', '');  
-			myTable.rowEnd();
 			
+			myTable.addCell('Primo', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0873245', '');  
+			
+			myTable.addCell('Fabio', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0648357', '');   
+			
+			myTable.onClickRow='alert(\'Chester\')';
+			myTable.addCell('Chester', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0873245', '');  
+			
+			myTable.addCell('Primo', '');
+			myTable.addCell('Di Matteo', '');
+			myTable.addCell('0873245', '');  
+			
+			//Realize table
 			myTable.attach('body');
 		});
 		

@@ -46,6 +46,11 @@ function pobTable () {
     this.styleScrolling;
     this.styleBody;
     
+    this.rowStyle='';
+    this.cellStyle='';
+    this.evenRowsColor='#E1EEF2';
+    this.oddRowsColor='#FFF';
+    
     this.attrsContainer;
     this.attrsHeader;
     this.attrsScrolling;
@@ -62,7 +67,8 @@ function pobTable () {
     this.wcols= [];
     this.cells = [];
     this.cellCount=0;
-    this.rowEnd=false; 
+    this.onClickRow='';
+    
     
     this.before='';
     this.after='';
@@ -77,16 +83,27 @@ function pobTable () {
 		this.wcols.push(width);  
 	}
 	
-	this.rowStart =function(fn, cssClass) {
-		this.cells.push('<tr onClick="'+fn+'" class="'+cssClass+'">');
-	}
 	
-	this.rowEnd =function() {
-		this.cells.push('</tr>');
-	}
 	
 	this.addCell =function(cellText, cssClass) {
-		this.cells.push('<td class="'+cssClass+'">'+cellText+'</td>');
+		this.cellCount++;	
+		
+		if(this.cellCount==1)
+		{ 
+			this.cells.push('<tr style="'+this.rowStyle+'" onclick="'+this.onClickRow+'">');
+		}
+		
+		this.cells.push('<td style="'+this.cellStyle+'" class="'+cssClass+'">'+cellText+'</td>');
+		this.cellStyle='';
+		
+		if(this.cellCount==this.cols.length)
+		{ 
+			this.cells.push('</tr>');
+			this.cellCount=0;
+			this.rowStyle='';
+		}
+		
+		this.onClickRow='';
 	}
 	
 	this.put= function(a){
@@ -97,6 +114,8 @@ function pobTable () {
 		}
 		return r;
 	}
+	
+	
 	
 	this.attach = function(container) {
 		pobTableCount++;
@@ -110,12 +129,14 @@ function pobTable () {
 				<table id="'+this.idHeader+'" class="'+this.cssClassHeader+'"> \
 				<tr>'+this.put(this.cols)+'</tr> \
 				</table>';
-
-			var tBody='<div id="'+this.idScrolling+'"> \
-				<table id="'+this.idBody+'" class="'+ this.cssClassBody+'">'+this.put(this.cells)+ 
-				'</table> \
-				</div>	\
-				</div>';
+		
+		this.cells=this.put(this.cells);
+		
+		var tBody='<div id="'+this.idScrolling+'"> \
+			<table id="'+this.idBody+'" class="'+ this.cssClassBody+'">'+this.cells+ 
+			'</table> \
+			</div>	\
+			</div>';
 		
 		$(container).append(tTop+tBody);
 
@@ -129,7 +150,8 @@ function pobTable () {
 		//Css styling
 		this.jqScrolling.css('height',this.height+'px');
 		this.jqScrolling.css('overflow','auto');
-		//$(".tbody tr td:nth-child(1)").css("width","200px");
+		$('#'+this.idBody+' tr:nth-child(even)').css("background", this.evenRowsColor);
+		$('#'+this.idBody+' tr:nth-child(odd)').css("background", this.oddRowsColor);
 		
 		var j=1;
 		for (i = 0; i <this.cols.length; i++) 
@@ -138,7 +160,7 @@ function pobTable () {
 			j++;
 		}
 		
-		alert(this.cols); 
+		//alert(this.cells); 
 		
 	}
     

@@ -36,6 +36,7 @@ function pobTable () {
     this.idBody;
     
     this.height=150;
+    this.width
     this.cssClassContainer;
     this.cssClassHeader;
     this.cssClassScrolling;
@@ -151,7 +152,7 @@ function pobTable () {
 		this.idScrolling=this.id+'Scrolling';
 		this.idBody=this.id+'Body';
 		
-		var tTop='<div id="'+this.idContainer+'" class="'+this.cssClassContainer+'"> \
+		var tTop='<div id="'+this.idContainer+'" style="width:'+this.width+'px" class="'+this.cssClassContainer+'"> \
 				<table id="'+this.idHeader+'" class="'+this.cssClassHeader+'"> \
 				<tr>'+this.put(this.cols)+'</tr> \
 				</table>';

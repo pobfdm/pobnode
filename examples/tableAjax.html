@@ -12,11 +12,15 @@
 	<style>
 		.tableContainer{
 				border: 1px Solid #4D4D4D;
-				width: 935px;
-				background-color: #BFBFBF ; /* Colore di sfondo griglia*/
+				background-color:#BFBFBF ; 
 			}
-		.tableHeader tr td{	font-weight: bold;	}
-		.tableBody{ font-size: 12px}		
+		.tableHeader tr td{	font-weight: bold; 
+			background: linear-gradient(#023276, #2258DA);
+			color: white;	
+			}
+		.tableBody{ font-size: 12px}
+		.tableBody tr:hover{background-color: red; }		
+		#colName{background: linear-gradient(#023276, #2258DA);}
 			
 		</style>
 	
@@ -27,27 +31,21 @@
 			myTable.cssClassContainer='tableContainer';
 			myTable.cssClassHeader='tableHeader';
 			myTable.cssClassBody='tableBody';
-			myTable.height= 100;	
+			myTable.height= 200;
+			myTable.width=935;	
 				
 			//Make columns
-			myTable.addCol('Name', 300, 'colName');
-			myTable.addCol('Last Name', 400, 'colLastName');
+			myTable.addCol('Name', 200, 'colName');
+			myTable.addCol('Last Name', 300, 'colLastName');
 			myTable.addCol('Telephone', 200, 'colTel');
-			
-			//1 row
-			/*myTable.onClickRow='alert(\'Chester\')';
-			myTable.rowStyle='cursor:pointer;';
-			myTable.addCell('Chester', '');
-			myTable.cellStyle='background-color:red;';
-			myTable.addCell('Di Matteo', '');
-			myTable.addCell('0873245', '');*/ 
+			myTable.addCol('E-mail', 200, 'colEmail');
 			
 			//Realize table
 			myTable.attach('body');
 			
 			
 			$("#myButton").click(function(){
-					myTable.load('data.html');
+					myTable.load('data.php');
 				});
 			
 		});

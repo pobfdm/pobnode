@@ -36,7 +36,7 @@ function pobTable () {
     this.idBody;
     
     this.height=150;
-    this.width
+    this.width=0;
     this.cssClassContainer;
     this.cssClassHeader;
     this.cssClassScrolling;
@@ -80,7 +80,7 @@ function pobTable () {
 	}
 	
 	this.addCol =function(colText, width, id) {
-		this.cols.push('<td id="'+id+'" style="width: '+width+'px">'+colText+'</td>');
+		this.cols.push('<td id="'+id+'" style="width: '+width+'px;  word-wrap: break-word;">'+colText+'</td>');
 		this.wcols.push(width);  
 	}
 	
@@ -136,11 +136,20 @@ function pobTable () {
 		$('#'+this.idBody+' tr:nth-child(odd)').css("background", this.oddRowsColor);
 		
 		var j=1;
+		var totalWidth=0;
 		for (i = 0; i <this.cols.length; i++) 
 		{
 			$('#'+this.idBody+' tr td:nth-child('+j+')').css("width", this.wcols[i]+"px");
+			totalWidth+=this.wcols[i];
 			j++;
 		}
+		if(this.width==0)
+		{
+			$('#'+this.idContainer).css('width',totalWidth+45+'px');
+		}else{
+			$('#'+this.idContainer).css('width',this.width+'px');
+		}
+		
 	}
 	
 	
@@ -152,8 +161,8 @@ function pobTable () {
 		this.idScrolling=this.id+'Scrolling';
 		this.idBody=this.id+'Body';
 		
-		var tTop='<div id="'+this.idContainer+'" style="width:'+this.width+'px" class="'+this.cssClassContainer+'"> \
-				<table id="'+this.idHeader+'" class="'+this.cssClassHeader+'"> \
+		var tTop='<div id="'+this.idContainer+'"  class="'+this.cssClassContainer+'"> \
+				<table id="'+this.idHeader+'" class="'+this.cssClassHeader+'" > \
 				<tr>'+this.put(this.cols)+'</tr> \
 				</table>';
 		

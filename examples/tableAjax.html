@@ -39,8 +39,11 @@
 			myTable.addCol('Telephone', 200, 'colTel');
 			myTable.addCol('E-mail', 200, 'colEmail');
 			
+			//If you want automatic resize table on window resize 
+			myTable.autoExpand('#myDiv',40,25); //(container,offsetbody, offsetcontainer)
+			
 			//Realize table
-			myTable.attach('body');
+			myTable.attach('#myDiv');
 			
 			
 			$("#myButton").click(function(){
@@ -56,6 +59,7 @@
 <body>
 	<h3>Test pobTable</h3>
 	<button id="myButton">Load content from data.php</button>
+	<div id="myDiv" style="width: 100%"></div>
 </body>
 
 </html>

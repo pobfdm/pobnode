@@ -27,6 +27,7 @@
 
 var pobTableCount=0;
 
+
 function pobTable () {
     
     this.id;
@@ -152,6 +153,11 @@ function pobTable () {
 		
 	}
 	
+	this.autoExpand = function(w, offsetBody, offsetContainer){
+		autoExpand(w,this, offsetBody, offsetContainer);
+		
+	}
+	
 	
 	this.attach = function(container) {
 		pobTableCount++;
@@ -188,3 +194,13 @@ function pobTable () {
     
 }
 
+
+function autoExpand(w,t, offsetBody, offsetContainer)
+{
+	$(window).bind('ready resize', function() {
+			t.jqHeader.width(  $(w).width() - offsetBody );
+			t.jqBody.width(  $(w).width() - offsetBody );
+			t.jqContainer.width(  $(w).width() - offsetContainer );
+		});
+
+}

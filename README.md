@@ -9,4 +9,5 @@ You can see  some examples :
 * [Layouts](/examples/layout.html)
 * [Tables](/examples/table.html)
 * [Tables width ajax](/examples/tableAjax.html)
+* [Select](/examples/select.html)
 

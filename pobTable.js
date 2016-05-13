@@ -153,8 +153,8 @@ function pobTable () {
 		
 	}
 	
-	this.autoExpand = function(w, offsetBody, offsetContainer){
-		autoExpand(w,this, offsetBody, offsetContainer);
+	this.autoExpand = function(w, offsetContainer){
+		autoExpand(w,this, offsetContainer);
 		
 	}
 	
@@ -195,12 +195,13 @@ function pobTable () {
 }
 
 
-function autoExpand(w,t, offsetBody, offsetContainer)
+function autoExpand(w,t, offsetContainer)
 {
 	$(window).bind('ready resize', function() {
-			t.jqHeader.width(  $(w).width() - offsetBody );
-			t.jqBody.width(  $(w).width() - offsetBody );
 			t.jqContainer.width(  $(w).width() - offsetContainer );
+			t.jqHeader.width(  t.jqContainer.width() - 20);
+			t.jqBody.width(  t.jqContainer.width() - 20);
+			
 		});
 
 }

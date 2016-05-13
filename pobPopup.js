@@ -87,7 +87,7 @@ function pobPopup () {
 		this.idHeader=this.id+'Header';
 		this.idBody=this.id+'Body';
 		
-		var el=this.before+'<div id="'+this.id+'" class="'+this.containerClass+'" style="position: fixed;top: '+this.top+';left:'+this.left+';display:none;border: '+this.border+'" '+this.attrs+'>\
+		var el=this.before+'<div id="'+this.id+'" class="'+this.containerClass+'" style="z-index: 9999;position: fixed;top: '+this.top+';left:'+this.left+';display:none;border: '+this.border+'" '+this.attrs+'>\
 			<div id="'+this.idHeader+'" class="'+this.headerClass+'" style="border-bottom:'+this.border+'">'+this.label+'</div> \
 			<div id="'+this.idBody+'" class="'+this.bodyClass+'">'+this.html+'</div> \
 		</div>'+this.after;

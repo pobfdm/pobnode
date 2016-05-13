@@ -146,16 +146,15 @@ function pobTable () {
 		}
 		if(this.width==0)
 		{
-			$('#'+this.idContainer).css('width',totalWidth+45+'px');
+			$('#'+this.idContainer).width($('#'+this.idHeader).width()+20);
 		}else{
 			$('#'+this.idContainer).css('width',this.width+'px');
 		}
 		
 	}
 	
-	this.autoExpand = function(w, offsetContainer){
-		autoExpand(w,this, offsetContainer);
-		
+	this.autoExpand = function(w){
+		autoExpand(w,this);
 	}
 	
 	
@@ -195,10 +194,10 @@ function pobTable () {
 }
 
 
-function autoExpand(w,t, offsetContainer)
+function autoExpand(w,t)
 {
 	$(window).bind('ready resize', function() {
-			t.jqContainer.width(  $(w).width() - offsetContainer );
+			t.jqContainer.width(  $(w).width() );
 			t.jqHeader.width(  t.jqContainer.width() - 20);
 			t.jqBody.width(  t.jqContainer.width() - 20);
 			

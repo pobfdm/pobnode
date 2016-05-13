@@ -1,0 +1,109 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Test pobPopup</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	
+	<script src="jquery-2.2.3.min.js"></script>
+	<script src="../pobPopup.js"></script>
+	<style>
+		.containerClass{
+			background-color: #BFBFBF;
+			background: linear-gradient(#fff, #999);
+			
+			}
+		.bodyClass{	
+			padding:5px;
+			}
+		.headerClass{
+			background-color: #131365; 
+			background: linear-gradient(#023276, #2258DA);
+			color: white;
+			}
+	</style>
+	
+	<script>
+		
+		$(document).ready(function () {
+			myPopup= new pobPopup();
+			myPopup.bodyClass='bodyClass'; //main content
+			myPopup.headerClass='headerClass'; //header 
+			myPopup.containerClass='containerClass'; //entire container
+			myPopup.label='Test pobPopup';
+			myPopup.append('<h2>Information</h2>');
+			myPopup.append('<p>Click this button for close...</p>');
+			myPopup.append('<button onclick="myPopup.toggle();">Close</button>');
+			myPopup.attach('body');
+			
+			//Open/Close a static popup
+			$("#myButton0").click(function(){ myPopup.toggle();	});
+			
+			//Load dynamic content (data.html) inside popup
+			$("#myButton1").click(function(){ myPopup.load("data.html");	});
+		});
+		
+		</script>
+	
+</head>
+
+<body>
+	<h3>Test pobPopup</h3>
+	<button id="myButton0">Open popup</button>
+	<button id="myButton1">Load data.html in popup</button>
+	<p style="width: 400px">
+Quidem molestiae in recusandae et temporibus soluta. Expedita a accusamu
+s voluptatum repellat sit. Voluptatibus et cum ipsam ut modi. Saepe earu
+m placeat sit voluptas nobis autem.
+Ullam id eos odit autem vel odio. Quod molestiae rerum animi. Voluptas q
+uia qui recusandae incidunt doloremque ipsam tempora.
+Temporibus accusantium quia non aut eaque qui aliquam. Temporibus commod
+i velit ratione. Magnam quo corrupti et sit officiis. Sed maiores dolore
+s omnis unde voluptatem fugit ab.
+Iste ut aspernatur maxime amet. Ea officiis minima illum et ut magni lab
+orum tempore. Rerum non vel dolorum qui itaque est ducimus. Nesciunt vol
+uptatem voluptate amet voluptatum accusamus quae. Sed eius reiciendis ut
+saepe. Repellat assumenda delectus ad quasi voluptatem ea.
+Repellendus corporis nulla quis. Consequatur voluptas magnam quo nesciun
+t dolorem aspernatur. Saepe doloribus est perferendis temporibus et. Qui
+s velit molestias veniam. Eum earum consequatur exercitationem dolorum. 
+Nobis soluta repudiandae explicabo ipsam officia.
+Quidem molestiae in recusandae et temporibus soluta. Expedita a accusamu
+s voluptatum repellat sit. Voluptatibus et cum ipsam ut modi. Saepe earu
+m placeat sit voluptas nobis autem.
+Ullam id eos odit autem vel odio. Quod molestiae rerum animi. Voluptas q
+uia qui recusandae incidunt doloremque ipsam tempora.
+Temporibus accusantium quia non aut eaque qui aliquam. Temporibus commod
+i velit ratione. Magnam quo corrupti et sit officiis. Sed maiores dolore
+s omnis unde voluptatem fugit ab.
+Iste ut aspernatur maxime amet. Ea officiis minima illum et ut magni lab
+orum tempore. Rerum non vel dolorum qui itaque est ducimus. Nesciunt vol
+uptatem voluptate amet voluptatum accusamus quae. Sed eius reiciendis ut
+ saepe. Repellat assumenda delectus ad quasi voluptatem ea.
+Repellendus corporis nulla quis. Consequatur voluptas magnam quo nesciun
+t dolorem aspernatur. Saepe doloribus est perferendis temporibus et. Qui
+s velit molestias veniam. Eum earum consequatur exercitationem dolorum. 
+Nobis soluta repudiandae explicabo ipsam officia.
+Quidem molestiae in recusandae et temporibus soluta. Expedita a accusamu
+s voluptatum repellat sit. Voluptatibus et cum ipsam ut modi. Saepe earu
+m placeat sit voluptas nobis autem.
+Ullam id eos odit autem vel odio. Quod molestiae rerum animi. Voluptas q
+uia qui recusandae incidunt doloremque ipsam tempora.
+Temporibus accusantium quia non aut eaque qui aliquam. Temporibus commod
+i velit ratione. Magnam quo corrupti et sit officiis. Sed maiores dolore
+s omnis unde voluptatem fugit ab.
+Iste ut aspernatur maxime amet. Ea officiis minima illum et ut magni lab
+orum tempore. Rerum non vel dolorum qui itaque est ducimus. Nesciunt vol
+uptatem voluptate amet voluptatum accusamus quae. Sed eius reiciendis ut
+ saepe. Repellat assumenda delectus ad quasi voluptatem ea.
+<a href="javascript:myPopup.toggle();">Open popup</a>
+Repellendus corporis nulla quis. Consequatur voluptas magnam quo nesciun
+t dolorem aspernatur. Saepe doloribus est perferendis temporibus et. Qui
+s velit molestias veniam. Eum earum consequatur exercitationem dolorum. 
+Nobis soluta repudiandae explicabo ipsam officia.
+</p>
+</body>
+
+</html>

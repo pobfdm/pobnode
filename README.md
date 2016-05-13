@@ -10,4 +10,5 @@ You can see  some examples :
 * [Tables](/examples/table.html)
 * [Tables width ajax](/examples/tableAjax.html)
 * [Select](/examples/select.html)
+* [Popup](/examples/popup.html)
 

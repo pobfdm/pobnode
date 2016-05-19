@@ -116,3 +116,32 @@ function pobAjax (type,target,outDiv) {
 
 }	
 	
+
+
+function hasTouch() {
+    return (('ontouchstart' in window) ||       // html5 browsers
+            (navigator.maxTouchPoints > 0) ||   // future IE
+            (navigator.msMaxTouchPoints > 0));  // current IE10
+}
+
+
+var isMobile = {
+Android: function() {
+	return navigator.userAgent.match(/Android/i);
+},
+BlackBerry: function() {
+	return navigator.userAgent.match(/BlackBerry/i);
+},
+iOS: function() {
+	return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+},
+Opera: function() {
+	return navigator.userAgent.match(/Opera Mini/i);
+},
+Windows: function() {
+	return navigator.userAgent.match(/IEMobile/i);
+},
+any: function() {
+	return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+}
+};

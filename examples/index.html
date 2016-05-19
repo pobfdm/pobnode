@@ -16,16 +16,29 @@
 		$(document).ready(function () {
 			
 			button1 = new pobNode('button');
-			button1.setHtml('Bottone 1');
+			button1.setHtml('Button 1');
 			button1.attach('body');
 			
 			button2 = new pobNode('button');
-			button2.setHtml('Bottone 2');
+			button2.setHtml('Button 2');
 			button2.attach('body');
 			
 			
-			button1.jq.bind('click',function(){ $('body').append('<p>Cliccato bottone 1</p>')});
-			button2.jq.bind('click',function(){ $('body').append('<p>Cliccato bottone 2</p>')});
+			button1.jq.bind('click',function(){ $('body').append('<p>Clicked 1</p>')});
+			button2.jq.bind('click',function(){ $('body').append('<p>Clicked 2</p>')});
+			
+			//Optional...Detecting if is mobile (touch and user agent)
+			if (!hasTouch())
+			{
+				$('body').append('<p>Your browser not support touch.</p>');
+			}else{
+				$('body').append('<p>Your browser support touch.</p>');
+				if( isMobile.Android() ) $('body').append('<p>Your device is Android.</p>');
+				if( isMobile.BlackBerry() ) $('body').append('<p>Your device is BlackBerry.</p>');
+				if( isMobile.iOS() ) $('body').append('<p>Your device is iOS.</p>');
+				if( isMobile.Opera() ) $('body').append('<p>Your device is Opera mini.</p>');
+				if( isMobile.Windows() ) $('body').append('<p>Your device is a Windows.</p>');
+			}
 			
 		});
 		

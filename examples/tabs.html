@@ -1,0 +1,97 @@
+<!--
+   senza nome.html
+   
+   Copyright 2016 Fabio DM <fadimatteo@gmail.com>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>pobTabs</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<style>
+		.container{	width: 500px;	}
+		.LabelContainer{
+				background-color: #4D4D4D;
+				background: linear-gradient(#fff, #999);
+				padding-top: 3px;
+			}	
+		.tab{
+				border-top-left-radius: 10px 5px;
+				border-top-right-radius: 10px 5px;
+				font-size: 18px;
+				margin-right: 3px;
+				padding-left: 3px;
+				padding-right: 3px;
+				background-color: #BFBFBF;
+				text-decoration: none;
+				color: #4D4D4D;
+			}
+		
+		.open{
+			color: #FFFFFF;
+			background-color: #4D4D4D;
+			font-weight: bold;
+			}
+		.bodyTabs{
+				background-color: #BFBFBF;
+				background: linear-gradient(#fff, #999);
+				padding: 5px;
+			}
+		
+	</style>
+	<script src="jquery-2.2.3.min.js"></script>
+	<script src="../pobTabs.js"></script>
+	<script>
+		$(document).ready(function(){
+			var myTabs = new pobTabs();
+			myTabs.border='1px solid #BFBFBF';
+			
+			//Bind to css class
+			myTabs.cssClass='container'
+			myTabs.cssClassLabelContainer='LabelContainer';
+			myTabs.cssClassBody='bodyTabs';
+			myTabs.cssClassClickedTab='open';
+			
+			//Adding some tabs. (Label, content url, id, class)
+			myTabs.addTab('Tab 0','tab0.html','tab0','tab');
+			myTabs.addTab('Tab 1','tab1.html','tab1','tab');
+			myTabs.addTab('Tab 2','tab2.html','tab2','tab');
+			myTabs.attach('body');	
+			
+			//Load tab at the start
+			myTabs.loadTab('tab0', 'tab0.html');
+			
+			$('body').append('<br><button id="mybtn">Load tab 1</button>');
+			$('#mybtn').click(function(){
+				myTabs.loadTab('tab1', 'tab1.html');	
+				});
+			
+			});
+	
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -28,14 +28,14 @@
 var pobTabsCount=0;
 
 
-function bindClickLabels(LabelsContainer ,body,cssClassClickedTab)
+function bindClickLabels(LabelsContainer ,body,cssClassClickedTab,loadingMessage)
 {
 	
 	//Prevent default and load tab content
 	$(LabelsContainer+' a').bind('click',function(e){
 					 e.preventDefault();
 					 var url=$(this).attr('href');
-					 body.load(url);
+					 body.html(loadingMessage).load(url);
 					 $(LabelsContainer+ ' a').removeClass(cssClassClickedTab);
 					 $(this).addClass(cssClassClickedTab);
 				});
@@ -49,6 +49,7 @@ function pobTabs () {
     this.cssClassLabelContainer;
     this.cssClassBody;
     this.cssClassClickedTab='';
+    this.loadingMessage='<p>Loading...</p>'
     this.jq;
     this.jqBody;
     this.jqLabelsContainer;
@@ -67,7 +68,7 @@ function pobTabs () {
 	}
 	
 	this.loadTab =function(id, url) {
-		this.jqBody.load(url);
+		this.jqBody.html(this.loadingMessage).load(url);
 		$('#'+this.id+'LabelsContainer a').removeClass(this.cssClassClickedTab);
 		$('#'+id).addClass(this.cssClassClickedTab);
 	}
@@ -91,7 +92,7 @@ function pobTabs () {
 		this.jqBody = $('#'+this.id+'TabBody');
 		this.jqLabelsContainer=$('#'+this.id+'LabelsContainer');
 		
-		bindClickLabels('#'+this.id+'LabelsContainer',this.jqBody,this.cssClassClickedTab);
+		bindClickLabels('#'+this.id+'LabelsContainer',this.jqBody,this.cssClassClickedTab,this.loadingMessage);
 	}
     
 }

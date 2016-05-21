@@ -27,8 +27,7 @@
 
 var pobTabsCount=0;
 
-
-function bindClickLabels(LabelsContainer ,body,cssClassClickedTab,loadingMessage)
+function bindClickLabels(LabelsContainer ,body,cssClassClickedTab,loadingMessage,tabsContainer)
 {
 	
 	//Prevent default and load tab content
@@ -38,8 +37,9 @@ function bindClickLabels(LabelsContainer ,body,cssClassClickedTab,loadingMessage
 					 body.html(loadingMessage).load(url);
 					 $(LabelsContainer+ ' a').removeClass(cssClassClickedTab);
 					 $(this).addClass(cssClassClickedTab);
+					 
+					 tabsContainer.data('current',$(this).attr('id'));
 				});
-		
 }
 
 function pobTabs () {
@@ -50,6 +50,7 @@ function pobTabs () {
     this.cssClassBody;
     this.cssClassClickedTab='';
     this.loadingMessage='<p>Loading...</p>'
+    this.currentTab;
     this.jq;
     this.jqBody;
     this.jqLabelsContainer;
@@ -67,10 +68,41 @@ function pobTabs () {
 		style="border: '+this.border+';">'+label+'</a>';
 	}
 	
+	this.appendTab= function(label,url,id,cssClass)
+	{
+		this.jqLabelsContainer.append('<a id="'+id+'" href="'+url+'" class="'+cssClass+'"  \
+		style="border: '+this.border+';">'+label+'</a>');
+		
+		$('#'+this.id+'LabelsContainer a').unbind('click');
+		bindClickLabels('#'+this.id+'LabelsContainer',this.jqBody,this.cssClassClickedTab,this.loadingMessage, this.jq);
+	
+	}
+	
+	this.getCurrent = function()
+	{
+		return this.jq.data('current');
+	}
+	
+	this.deleteTab= function(id)
+	{
+		
+		var url=$('#'+id).prev().attr('href');
+		this.jqBody.html(this.loadingMessage).load(url);
+		
+		$('#'+this.id+'LabelsContainer a').removeClass(this.cssClassClickedTab);
+		$('#'+id).prev().addClass(this.cssClassClickedTab);
+		this.jq.data('current',$('#'+id).prev().attr('id'));
+		
+		$('#'+id).remove();
+		
+	}
+	
 	this.loadTab =function(id, url) {
 		this.jqBody.html(this.loadingMessage).load(url);
 		$('#'+this.id+'LabelsContainer a').removeClass(this.cssClassClickedTab);
 		$('#'+id).addClass(this.cssClassClickedTab);
+		
+		this.jq.data('current',$('#'+id).attr('id'));
 	}
 	
 	
@@ -92,7 +124,8 @@ function pobTabs () {
 		this.jqBody = $('#'+this.id+'TabBody');
 		this.jqLabelsContainer=$('#'+this.id+'LabelsContainer');
 		
-		bindClickLabels('#'+this.id+'LabelsContainer',this.jqBody,this.cssClassClickedTab,this.loadingMessage);
+		bindClickLabels('#'+this.id+'LabelsContainer',this.jqBody,this.cssClassClickedTab,this.loadingMessage,this.jq);
+		
 	}
     
 }

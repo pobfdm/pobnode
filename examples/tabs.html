@@ -79,15 +79,29 @@
 			myTabs.addTab('Tab 0','tab0.html','tab0','tab');
 			myTabs.addTab('Tab 1','tab1.html','tab1','tab');
 			myTabs.addTab('Tab 2','tab2.html','tab2','tab');
-			myTabs.after='<button id="mybtn">Load tab 1</button>';
+			myTabs.after='';
 			myTabs.attach('body');	
 			
 			//Load tab at the start
 			myTabs.loadTab('tab0', 'tab0.html');
 			
-			$('#mybtn').click(function(){
+			//interact with tabs
+			$('#mybtn0').click(function(){
+				//load a specific tab
 				myTabs.loadTab('tab1', 'tab1.html');	
 				});
+			
+			var c=3;
+			$('#mybtn1').click(function(){
+				//Append tab at runtime
+				myTabs.appendTab('Tab '+c,'tabn.html','tab'+c,'tab');
+				c++;
+				});
+			
+			//Delete tab at runtime
+			$('#mybtn').click(function(){
+				myTabs.deleteTab(myTabs.getCurrent());
+				});	
 			
 			});
 	
@@ -95,6 +109,11 @@
 </head>
 
 <body>
+	<p>
+	<button id="mybtn0">Load tab 1</button>
+	<button id="mybtn1">Add Tab at runtime</button>
+	<button id="mybtn">Delete current tab</button>
+	</p>
 </body>
 
 </html>

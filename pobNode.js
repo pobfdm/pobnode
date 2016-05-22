@@ -54,9 +54,15 @@ function pobNode (type) {
 	this.attach = function(container) {
 		pobNodeCount++;
 		this.id='pobNode'+pobNodeCount;
-		var el=this.before+'<'+this.type+ ' style="'+this.style+'"id="'+this.id+'"  class="'+this.class+'" '+this.attrs+'>'+this.html+'</'+this.type+'>'+this.after;
+		
+		if(this.type!='img')
+		{
+			var el=this.before+'<'+this.type+ ' style="'+this.style+'"id="'+this.id+'"  class="'+this.class+'" '+this.attrs+'>'+this.html+'</'+this.type+'>'+this.after;
+		}else{
+			var el=this.before+'<'+this.type+ ' style="'+this.style+'"id="'+this.id+'"  class="'+this.class+'" '+this.attrs+'>'+this.after;
+		}
 		$(container).append(el);
-
+		
 		//Convert to jquery element
 		this.jq =  $('#'+this.id);
 	}

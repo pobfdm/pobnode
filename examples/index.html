@@ -15,6 +15,11 @@
 		
 		$(document).ready(function () {
 			
+			logo= new pobNode('img');
+			logo.addAttr('src','http://www.freemedialab.org/wiki/lib/tpl/dokuwiki/images/logo.png');
+			logo.after='<br>';
+			logo.attach('body');
+			
 			button1 = new pobNode('button');
 			button1.setHtml('Button 1');
 			button1.attach('body');
